@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vrindopnishad Interactive Logo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@900&family=Outfit:wght@400;600;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="my.css">
+</head>
+
+<body>
+    <!-- ── Navigation (fixed) ──────────────────────────────────── -->
+    <nav class="nav">
+        <span class="nav-item" id="nav-menu">MENU</span>
+        <span class="nav-item" id="nav-cart">CART</span>
+    </nav>
+
+    <!-- ══ Hero scroll wrapper — 500vh tall, hero sticks inside ══ -->
+    <div class="hero-scroll-wrapper">
+        <section class="hero">
+
+            <!-- Rings — child(1) is outermost (highest z-index) -->
+            <div class="depth-layer">
+                <div class="depth-mask"></div>
+            </div>
+            <div class="depth-layer">
+                <div class="depth-mask"></div>
+            </div>
+            <div class="depth-layer">
+                <div class="depth-mask"></div>
+            </div>
+            <div class="depth-layer">
+                <div class="depth-mask"></div>
+            </div>
+            <div class="depth-layer">
+                <div class="depth-mask"></div>
+            </div>
+
+            <!-- Innermost layer — white backdrop behind rings -->
+            <div class="depth-layer logo-layer">
+                <div class="logo">
+                    <canvas id="model-canvas"></canvas>
+                </div>
+            </div>
+
+        </section>
+    </div><!-- /.hero-scroll-wrapper -->
+
+    <!-- ══ Wave section — amber wave crest dips into navy blue ══ -->
+    <div class="wave-section" style="background: transparent;">
+        <canvas id="footer-wave" class="wave-canvas" aria-hidden="true"></canvas>
+    </div>
+
+    <!-- ══ Dream section — dark navy with scrolling text rows ════ -->
+    <section class="dream-section">
+        <!-- Row 1: scrolls left -->
+        <div class="dream-row">
+            <div class="dream-track --left">
+                <span class="dream-item --white">TO DREAM IS NOT ENOUGH</span>
+                <span class="dream-item --yellow">🧩</span>
+                <span class="dream-item --white">BUT TO DREAM IS NOT ENOUGH</span>
+                <span class="dream-item --yellow">🧩</span>
+                <span class="dream-item --white">TO DREAM IS NOT ENOUGH</span>
+                <span class="dream-item --yellow">🧩</span>
+                <span class="dream-item --white">BUT TO DREAM IS NOT ENOUGH</span>
+                <span class="dream-item --yellow">🧩</span>
+            </div>
+        </div>
+        <!-- Row 2: scrolls right -->
+        <div class="dream-row">
+            <div class="dream-track --right">
+                <span class="dream-item --white">IT WON'T HAPPEN OVER NIGHT</span>
+                <span class="dream-item --muted">🧩</span>
+                <span class="dream-item --white">IT WON'T HAPPEN OVER NIGHT</span>
+                <span class="dream-item --muted">🧩</span>
+                <span class="dream-item --white">IT WON'T HAPPEN OVER NIGHT</span>
+                <span class="dream-item --muted">🧩</span>
+                <span class="dream-item --white">IT WON'T HAPPEN OVER NIGHT</span>
+                <span class="dream-item --muted">🧩</span>
+            </div>
+        </div>
+        <!-- Row 3: scrolls left, yellow -->
+        <div class="dream-row">
+            <div class="dream-track --left --slow">
+                <span class="dream-item --yellow">PIECE BY PIECE</span>
+                <span class="dream-item --white">🧩</span>
+                <span class="dream-item --yellow">PIECE BY PIECE</span>
+                <span class="dream-item --white">🧩</span>
+                <span class="dream-item --yellow">PIECE BY PIECE</span>
+                <span class="dream-item --white">🧩</span>
+                <span class="dream-item --yellow">PIECE BY PIECE</span>
+                <span class="dream-item --white">🧩</span>
+            </div>
+        </div>
+    </section>
+    <div class="wave-section wave-section--bottom" style="background: #001850;">
+        <canvas id="dream-wave-bottom" class="wave-canvas" aria-hidden="true"></canvas>
+    </div>
+
+    <!-- ══ Ticker strip ══════════════════════════════════════════ -->
+    <div class="ticker-wrap">
+        <div class="ticker-track">
+            <span class="ticker-item">STAY IN THE DREAM ✦</span>
+            <span class="ticker-item">PIECE BY PIECE ✦</span>
+            <span class="ticker-item">KEEP CHASING ✦</span>
+            <span class="ticker-item">TO DREAM IS NOT ENOUGH ✦</span>
+            <span class="ticker-item">STAY IN THE DREAM ✦</span>
+            <span class="ticker-item">PIECE BY PIECE ✦</span>
+            <span class="ticker-item">KEEP CHASING ✦</span>
+            <span class="ticker-item">TO DREAM IS NOT ENOUGH ✦</span>
+        </div>
+    </div>
+
+    <!-- wave: brown ticker → amber manifesto -->
+    <div class="wave-section wave-section--ticker-bottom" style="background: #3B1E00;">
+        <canvas id="wave-ticker-bottom" class="wave-canvas" aria-hidden="true"></canvas>
+    </div>
+
+    <!-- ══ Manifesto Section ══════════════════════════════════════ -->
+    <section class="manifesto-section">
+        <div class="manifesto-inner">
+            <p class="manifesto-quote">
+                JUST KNOW THAT EVERY WIN,<br>
+                LOSS &amp; ADVENTURE WILL MAKE<br>
+                SENSE. SO, KEEP DREAMING AND<br>
+                CHASING THAT MISSING PIECE
+            </p>
+            <a href="#" class="manifesto-cta">GRAB THE UNIFORM →</a>
+        </div>
+    </section>
+
+    <!-- wave: amber manifesto → navy card section -->
+    <div class="wave-section wave-section--manifesto" style="background: #ffbf00;">
+        <canvas id="wave-manifesto-bottom" class="wave-canvas" aria-hidden="true"></canvas>
+    </div>
+
+    <!-- ══ PINNED HORIZONTAL SECTION ══════════════════════════════
+         300vh tall wrapper — sticky inner shows 3 panels in sequence
+    ════════════════════════════════════════════════════════════════ -->
+    <div class="pin-wrapper">
+        <div class="pin-inner" id="pin-inner">
+            <div class="pin-track" id="pin-track">
+
+                <!-- Panel 1 -->
+                <div class="pin-panel pin-panel--1">
+                    <div class="pin-panel-content">
+                        <span class="pin-step">01</span>
+                        <h2>DREAM<br>IT FIRST</h2>
+                        <p>Every great thing starts inside the mind. Dare to imagine the impossible.</p>
+                    </div>
+                    <div class="pin-panel-deco">💭</div>
+                </div>
+
+                <!-- Panel 2 -->
+                <div class="pin-panel pin-panel--2">
+                    <div class="pin-panel-content">
+                        <span class="pin-step">02</span>
+                        <h2>BUILD<br>PIECE BY PIECE</h2>
+                        <p>Overnight success is a myth. Each small action compounds into something extraordinary.</p>
+                    </div>
+                    <div class="pin-panel-deco">🧩</div>
+                </div>
+
+                <!-- Panel 3 -->
+                <div class="pin-panel pin-panel--3">
+                    <div class="pin-panel-content">
+                        <span class="pin-step">03</span>
+                        <h2>STAY IN<br>THE DREAM</h2>
+                        <p>When the journey gets hard, the dream keeps you moving. Never stop chasing.</p>
+                    </div>
+                    <div class="pin-panel-deco">✦</div>
+                </div>
+            </div>
+
+            <!-- Progress dots -->
+            <div class="pin-dots" id="pin-dots">
+                <span class="pin-dot is-active" data-idx="0"></span>
+                <span class="pin-dot" data-idx="1"></span>
+                <span class="pin-dot" data-idx="2"></span>
+            </div>
+        </div><!-- /.pin-inner -->
+    </div><!-- /.pin-wrapper -->
+
+    <!-- ══ Feature Cards Section ══════════════════════════════════ -->
+    <section class="cards-section">
+        <h2 class="cards-title">WHAT WE STAND FOR</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🧩</div>
+                <h3>PIECE BY PIECE</h3>
+                <p>Every step matters. Build your dream methodically, one piece at a time.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌙</div>
+                <h3>NEVER OVERNIGHT</h3>
+                <p>Real success doesn't happen overnight — it's earned through consistent effort.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">✦</div>
+                <h3>STAY IN THE DREAM</h3>
+                <p>Even when reality is hard, keep the vision alive. The dream is the engine.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- wave: navy cards → amber footer -->
+    <div class="wave-section wave-section--to-footer" style="background: #001850;">
+        <canvas id="wave-to-footer" class="wave-canvas" aria-hidden="true"></canvas>
+    </div>
+
+    <!-- ══ Footer (natural flow, below hero wrapper) ══════════════ -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <h3 class="footer-title">STAY IN THE DREAM</h3>
+            <form class="newsletter-form" onsubmit="return false;">
+                <input type="email" class="email-input" placeholder="YOUR EMAIL">
+            </form>
+            <div class="nav-links">
+                <a href="#">Shop</a>
+                <a href="#">Legal</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="bottom-logo">V</div>
+        </div>
+    </footer>
+
+    <!-- ══ Menu Overlay (click-only) ═════════════════════════════ -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-overlay__outer">
+            <button class="menu-close">X</button>
+
+            <div class="menu-decorators">
+                <span class="scatter-letter m-letter">M</span>
+                <span class="scatter-letter o-letter">O</span>
+                <span class="scatter-letter b-letter">B</span>
+            </div>
+
+            <div class="menu-inner">
+                <div class="menu-links">
+                    <div class="links-item">
+                        <a href="#" class="link">
+                            <span class="bg"></span>
+                            <span class="text">SHOP ALL</span>
+                        </a>
+                    </div>
+                    <div class="links-item --brown">
+                        <a href="#" class="link">
+                            <span class="bg"></span>
+                            <span class="text">MOB DREAMS FILM</span>
+                        </a>
+                    </div>
+                    <div class="links-item --green">
+                        <a href="#" class="link">
+                            <span class="bg"></span>
+                            <span class="text">MOB HOTLINE</span>
+                        </a>
+                    </div>
+                    <div class="links-item --pink">
+                        <a href="#" class="link">
+                            <span class="bg"></span>
+                            <span class="text">SOCIAL MEDIA</span>
+                        </a>
+                    </div>
+                    <div class="links-item --blue">
+                        <a href="#" class="link">
+                            <span class="bg"></span>
+                            <span class="text">CONTACT</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ Cart Panel (click-only) ═══════════════════════════════ -->
+    <div class="cart-panel">
+        <div class="cart-header">
+            <h2>YOUR CART</h2>
+            <button class="cart-close">X</button>
+        </div>
+        <div class="cart-body">
+            <p class="empty-msg">A DREAMER WITH NO UNIFORM, REALLY ?!</p>
+        </div>
+        <div class="cart-footer">
+            <div class="subtotal-row">
+                <span>SUBTOTAL (0 ITEMS)</span>
+                <span>0 €</span>
+            </div>
+            <button class="shop-btn">SHOP</button>
+        </div>
+    </div>
+
+    <!-- ── CTA ────────────────────────────────────────────────── -->
+    <button class="cta-btn" id="scroll-cta">
+        SCROLL TO DISCOVER
+        <span class="cta-dot"></span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="model-viewer.js"></script>
+    <script src="my.js"></script>
+
+</body>
+
+</html>

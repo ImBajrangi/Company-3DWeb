@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!--
+    Organic blob shape for CSS mask-composite ring technique.
+    Intentionally asymmetric with smooth curves — matches the
+    liquid/organic feel of moblinks.fr
+  -->
+  <path d="
+    M215,28
+    C280,18 350,62 378,138
+    C406,214 396,296 350,342
+    C304,388 238,398 182,380
+    C126,362 72,320 42,264
+    C12,208 10,138 48,86
+    C86,34 150,38 215,28
+    Z
+  " fill="black"/>
+</svg>
